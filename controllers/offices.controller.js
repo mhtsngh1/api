@@ -160,7 +160,7 @@ exports.getImage = (req, res) => {
     let ImgUrl = req.protocol + '://' + req.get('host');
     const id = req.params.id;
 
-    Blog.findById(id)
+    Office.findById(id)
         .then(data => {
 
             if (!data) {
