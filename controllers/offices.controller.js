@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { deleteFile, deleteAllFile } = require('../middleware/deletefile.js');
 const { sendResponse } = require('../commonHelper/response.model');
+const { sendMail } = require('../config/email.config');
 const apiController = 'Office';
 
 
@@ -22,6 +23,7 @@ exports.create = (req, res) => {
     office
         .save(office)
         .then(data => {
+            sendMail();
             sendResponse(res, data, 201, apiController, null, req.method);
         })
         .catch(err => {
